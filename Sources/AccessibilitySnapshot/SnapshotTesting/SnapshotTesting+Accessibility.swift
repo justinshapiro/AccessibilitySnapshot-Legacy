@@ -105,7 +105,7 @@ extension Snapshotting where Value == UIView, Format == UIImage {
         at contentSizeCategory: UIContentSizeCategory,
         subpixelThreshold: UInt8 = 5
     ) -> Snapshotting {
-        return Snapshotting<UIView, UIImage>.image(subPixelThreshold: subpixelThreshold,
+        return Snapshotting<UIView, UIImage>.image(subpixelThreshold: subpixelThreshold,
             traits: .init(preferredContentSizeCategory: contentSizeCategory)
         )
     }
