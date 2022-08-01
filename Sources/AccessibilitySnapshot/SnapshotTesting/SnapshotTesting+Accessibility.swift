@@ -46,6 +46,7 @@ extension Snapshotting where Value == UIView, Format == UIImage {
         showActivationPoints activationPointDisplayMode: ActivationPointDisplayMode = .whenOverridden,
         useMonochromeSnapshot: Bool = true,
         drawHierarchyInKeyWindow: Bool = false,
+        subpixelThreshold: UInt8 = 5,
         markerColors: [UIColor] = []
     ) -> Snapshotting {
         guard isRunningInHostApplication else {
@@ -53,7 +54,7 @@ extension Snapshotting where Value == UIView, Format == UIImage {
         }
 
         return Snapshotting<UIView, UIImage>
-            .image(drawHierarchyInKeyWindow: drawHierarchyInKeyWindow)
+            .image(drawHierarchyInKeyWindow: drawHierarchyInKeyWindow, subpixelThreshold: subpixelThreshold)
             .pullback { view in
                 let containerView = AccessibilitySnapshotView(
                     containedView: view,
@@ -101,9 +102,10 @@ extension Snapshotting where Value == UIView, Format == UIImage {
     ///
     /// - parameter contentSizeCategory: The content size category to use in the snapshot
     static func image(
-        at contentSizeCategory: UIContentSizeCategory
+        at contentSizeCategory: UIContentSizeCategory,
+        subpixelThreshold: UInt8 = 5
     ) -> Snapshotting {
-        return Snapshotting<UIView, UIImage>.image(
+        return Snapshotting<UIView, UIImage>.image(subPixelThreshold: subpixelThreshold,
             traits: .init(preferredContentSizeCategory: contentSizeCategory)
         )
     }
@@ -184,6 +186,7 @@ extension Snapshotting where Value == UIViewController, Format == UIImage {
         showActivationPoints activationPointDisplayMode: ActivationPointDisplayMode = .whenOverridden,
         useMonochromeSnapshot: Bool = true,
         drawHierarchyInKeyWindow: Bool = false,
+        subpixelThreshold: UInt = 5,
         markerColors: [UIColor] = []
     ) -> Snapshotting {
         return Snapshotting<UIView, UIImage>
@@ -191,6 +194,7 @@ extension Snapshotting where Value == UIViewController, Format == UIImage {
                 showActivationPoints: activationPointDisplayMode,
                 useMonochromeSnapshot: useMonochromeSnapshot,
                 drawHierarchyInKeyWindow: drawHierarchyInKeyWindow,
+                subpixelThreshold: subpixelThreshold,
                 markerColors: markerColors
             )
             .pullback { viewController in
@@ -205,10 +209,12 @@ extension Snapshotting where Value == UIViewController, Format == UIImage {
     ///
     /// - parameter contentSizeCategory: The content size category to use in the snapshot
     static func image(
+        subpixelThreshold: UInt8 = 5,
         at contentSizeCategory: UIContentSizeCategory
     ) -> Snapshotting {
         return Snapshotting<UIView, UIImage>
             .image(
+                subpixelThreshold: subpixelThreshold,
                 traits: .init(preferredContentSizeCategory: contentSizeCategory)
             )
             .pullback { viewController in

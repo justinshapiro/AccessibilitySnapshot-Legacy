@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "SnapshotTesting",
-        "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing.git",
+        "repositoryURL": "https://github.com/ugiacoman/swift-snapshot-testing.git",
         "state": {
           "branch": null,
-          "revision": "c466812aa2e22898f27557e2e780d3aad7a27203",
-          "version": "1.8.2"
+          "revision": "ee5dc8fad8004283ffebaaebfc447d7a00545618",
+          "version": null
         }
       }
     ]
