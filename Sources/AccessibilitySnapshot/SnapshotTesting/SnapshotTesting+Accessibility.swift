@@ -186,7 +186,7 @@ extension Snapshotting where Value == UIViewController, Format == UIImage {
         showActivationPoints activationPointDisplayMode: ActivationPointDisplayMode = .whenOverridden,
         useMonochromeSnapshot: Bool = true,
         drawHierarchyInKeyWindow: Bool = false,
-        subpixelThreshold: UInt = 5,
+        subpixelThreshold: UInt8 = 5,
         markerColors: [UIColor] = []
     ) -> Snapshotting {
         return Snapshotting<UIView, UIImage>
