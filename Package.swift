@@ -12,13 +12,13 @@ let package = Package(
     products: [
         // Core + SnapshotTesting for image comparison
         .library(
-            name: "AccessibilitySnapshot",
-            targets: ["AccessibilitySnapshot"]
+            name: "AccessibilitySnapshotLegacy",
+            targets: ["AccessibilitySnapshotLegacy"]
         ),
         
         .library(
-            name: "AccessibilitySnapshotCore",
-            targets: ["AccessibilitySnapshotCore"]
+            name: "AccessibilitySnapshotLegacyCore",
+            targets: ["AccessibilitySnapshotLegacyCore"]
         ),
     ],
     dependencies: [
@@ -30,17 +30,17 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "AccessibilitySnapshotCore-ObjC",
+            name: "AccessibilitySnapshotLegacyCore-ObjC",
             path: "Sources/AccessibilitySnapshot/Core/ObjC"
         ),
         .target(
-            name: "AccessibilitySnapshotCore",
-            dependencies: ["AccessibilitySnapshotCore-ObjC"],
+            name: "AccessibilitySnapshotLegacyCore",
+            dependencies: ["AccessibilitySnapshotLegacyCore-ObjC"],
             path: "Sources/AccessibilitySnapshot/Core/Swift"
         ),
         .target(
-            name: "AccessibilitySnapshot",
-            dependencies: ["AccessibilitySnapshotCore", "SnapshotTesting"],
+            name: "AccessibilitySnapshotLegacy",
+            dependencies: ["AccessibilitySnapshotLegacyCore", "SnapshotTesting"],
             path: "Sources/AccessibilitySnapshot/SnapshotTesting"
         )
     ]

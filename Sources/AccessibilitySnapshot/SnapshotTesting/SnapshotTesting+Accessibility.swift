@@ -18,8 +18,8 @@ import SnapshotTesting
 import UIKit
 
 #if SWIFT_PACKAGE
-import AccessibilitySnapshotCore
-import AccessibilitySnapshotCore_ObjC
+import AccessibilitySnapshotLegacyCore
+import AccessibilitySnapshotLegacyCore_ObjC
 #endif
 
 extension Snapshotting where Value == UIView, Format == UIImage {
